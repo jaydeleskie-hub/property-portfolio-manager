@@ -1,7 +1,13 @@
+^X
 {
   "name": "backend",
   "version": "1.0.0",
   "description": "",
+\"main": "server.js"
+,0
+O
+X
+,X
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,3 +31,4 @@
     "stripe": "^19.1.0"
   }
 }
+
