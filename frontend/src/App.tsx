@@ -33,9 +33,7 @@ function App() {
     return images[location] || 'https://source.unsplash.com/400x250/?luxury,house';
   };
 
-  if (loading) {
-    return <div className="loading">Loading...</div>;
-  }
+  if (loading) return <div className="loading">Loading...</div>;
 
   return (
     <div className="App">
@@ -47,12 +45,13 @@ function App() {
       <div className="grid">
         {properties.map(property => (
           <div key={property.id} className="card">
-            <div 
-              className="image-placeholder" 
-              style={{ 
+            <div
+              className="image-placeholder"
+              style={{
                 backgroundImage: `url(${getImageUrl(property.location)})`,
                 backgroundSize: 'cover',
-                backgroundPosition: 'center'
+                backgroundPosition: 'center',
+                height: '180px'
               }}
             />
             <div className="content">
