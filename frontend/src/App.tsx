@@ -51,7 +51,8 @@ function App() {
                 backgroundImage: `url(${getImageUrl(property.location)})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                height: '180px'
+                height: '180px',
+                borderRadius: '12px 12px 0 0'
               }}
             />
             <div className="content">
