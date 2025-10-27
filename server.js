@@ -3,8 +3,10 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, 'frontend/build')));
+// Serve static files from ./build
+app.use(express.static(path.join(__dirname, 'build')));
 
+// API
 app.get('/api/properties', (req, res) => {
   res.json([
     { id: 1, name: 'Sunset Villa', price: 450000, location: 'Malibu', beds: 4, baths: 3 },
@@ -14,18 +16,9 @@ app.get('/api/properties', (req, res) => {
   ]);
 });
 
-app.get('/api/images', (req, res) => {
-  const images = [
-    { id: 1, image: 'https://source.unsplash.com/400x250/?malibu,beach,house' },
-    { id: 2, image: 'https://source.unsplash.com/400x250/?new,york,loft,city' },
-    { id: 3, image: 'https://source.unsplash.com/400x250/?lake,tahoe,house,water' },
-    { id: 4, image: 'https://source.unsplash.com/400x250/?aspen,mountain,cabin,snow' }
-  ];
-  res.json(images);
-});
-
+// Catch-all
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/build/index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(PORT, () => {
