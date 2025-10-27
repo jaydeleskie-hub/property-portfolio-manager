@@ -1,21 +1,9 @@
 const express = require('express');
-const cors = require('cors');
 const path = require('path');
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
-app.use(express.json());
-
-// Serve React build folder
 app.use(express.static(path.join(__dirname, 'frontend/build')));
-
-// API Routes
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'API is running!' });
-});
 
 app.get('/api/properties', (req, res) => {
   res.json([
@@ -26,12 +14,10 @@ app.get('/api/properties', (req, res) => {
   ]);
 });
 
-// Serve React app for any other route
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/build/index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`API: http://localhost:${PORT}/api/properties`);
+  console.log(`Server running on port ${PORT}`);
 });
