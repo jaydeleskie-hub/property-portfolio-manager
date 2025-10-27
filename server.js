@@ -3,10 +3,8 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static files from ./build
 app.use(express.static(path.join(__dirname, 'build')));
 
-// API
 app.get('/api/properties', (req, res) => {
   res.json([
     { id: 1, name: 'Sunset Villa', price: 450000, location: 'Malibu', beds: 4, baths: 3 },
@@ -16,7 +14,6 @@ app.get('/api/properties', (req, res) => {
   ]);
 });
 
-// Catch-all
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
